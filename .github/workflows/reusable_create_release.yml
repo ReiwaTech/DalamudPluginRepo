@@ -18,6 +18,10 @@ on:
       personal_plugin_repo_branch:
         type: string
         required: true
+      output_directory:
+        type: string
+        required: false
+        default: ./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}
     secrets:
       PAT:
         required: true
