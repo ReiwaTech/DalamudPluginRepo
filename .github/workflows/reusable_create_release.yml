@@ -56,6 +56,9 @@ jobs:
       - name: Build
         run: msbuild ${{ inputs.solution_name }}.sln /p:Configuration=${{ inputs.build_configuration }}
 
+      - name: List files
+        run: Get-ChildItem -Filter *.dll -Recurse -ErrorAction SilentlyContinue -Force
+
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
