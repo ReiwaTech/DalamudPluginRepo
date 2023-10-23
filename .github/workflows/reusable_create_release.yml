@@ -62,7 +62,7 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
-          path: ./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}/*
+          path: ${{ inputs.output_directory }}/*
 
   deploy:
     needs: build
