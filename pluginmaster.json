@@ -1,6 +1,38 @@
 [
     {
         "Author": "ReiwaTech",
+        "Name": "Allagan Tools",
+        "InternalName": "InventoryTools",
+        "AssemblyVersion": "1.6.0.2",
+        "Description": "Allagan Tool's primary purpose is to keep track of items across your characters/retainers/free company. With it's filter system you'll never lose track of items or not know where they should be sorted.\n\nWhile this is it's primary purpose, it has quite an exhaustive list of other features including:\n\t- Craft planning\n\t- Market board integration\n\t- Item highlighting in inventories when searching/sorting and picking ingredients for crafts\n\t- Item window that includes vendor and source information among other things\n\t- Duty/mob/airship/submarine windows that are fully searchable\n\t- A filtering system that lets you setup complex searches for specific items \n\t- Tooltip integration that'll let you see where the items are on hover",
+        "ApplicableVersion": "any",
+        "RepoUrl": "https://github.com/ReiwaTech/InventoryTools",
+        "Tags": [
+            "Inventory",
+            "Sorting",
+            "Filtering"
+        ],
+        "DalamudApiLevel": 8,
+        "ImageUrls": [
+            "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/banner1.png",
+            "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/screenshot1.png",
+            "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/screenshot2.png",
+            "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/screenshot3.png",
+            "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/screenshot4.png",
+            "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/screenshot5.png"
+        ],
+        "IconUrl": "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/icon.png",
+        "Punchline": "Get organized in FFXIV, easily locate/show where to sort items, plan your crafting, and search for mobs, duties, airships, and submarines!",
+        "DownloadLinkInstall": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.6.0.2/latest.zip",
+        "DownloadLinkTesting": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.6.0.2/latest.zip",
+        "DownloadLinkUpdate": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.6.0.2/latest.zip",
+        "IsHide": false,
+        "IsTestingExclusive": false,
+        "DownloadCount": 0,
+        "LastUpdate": "1698668152"
+    },
+    {
+        "Author": "ReiwaTech",
         "Name": "Penny Pincher",
         "InternalName": "PennyPincher",
         "AssemblyVersion": "2.0.0.0",
@@ -23,7 +55,7 @@
         "DownloadLinkUpdate": "https://github.com/ReiwaTech/PennyPincher/releases/download/v2.0.0.0/latest.zip",
         "IsHide": false,
         "IsTestingExclusive": false,
-        "DownloadCount": 0,
+        "DownloadCount": 1,
         "LastUpdate": "1688662019"
     }
 ]
