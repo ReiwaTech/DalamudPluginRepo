@@ -21,7 +21,7 @@ on:
       output_directory:
         type: string
         required: false
-        default: ./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}
+        default: ''
     secrets:
       PAT:
         required: true
@@ -59,10 +59,17 @@ jobs:
       - name: List files
         run: Get-ChildItem -Filter *.dll -Recurse -ErrorAction SilentlyContinue -Force
 
-      - name: Upload Build Artifact
+      - name: Upload Build Artifact (custom)
         uses: actions/upload-artifact@v3
+        if: inputs.output_directory != ''
         with:
           path: ${{ inputs.output_directory }}/*
+
+      - name: Upload Build Artifact (default)
+        uses: actions/upload-artifact@v3
+        if: inputs.output_directory == ''
+        with:
+          path: ./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}/*
 
   deploy:
     needs: build
