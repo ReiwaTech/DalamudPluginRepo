@@ -45,13 +45,13 @@ jobs:
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1
 
-      - name: Restore NuGet Packages
-        run: nuget restore ${{ inputs.solution_name }}.sln
-
       - name: Download Dalamud
         run: |
           Invoke-WebRequest -Uri https://reiwatech.github.io/dalamud-distrib/cn/latest.zip -OutFile latest.zip
           Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev\"
+
+      - name: Restore NuGet Packages
+        run: nuget restore ${{ inputs.solution_name }}.sln
 
       - name: Build
         run: msbuild ${{ inputs.solution_name }}.sln /p:Configuration=${{ inputs.build_configuration }}
