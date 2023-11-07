@@ -1,6 +1,27 @@
 [
     {
         "Author": "ReiwaTech",
+        "Name": "HappyIME",
+        "InternalName": "HappyIME",
+        "AssemblyVersion": "0.0.0.1",
+        "Description": "Fix IME being set to full-width.",
+        "ApplicableVersion": "any",
+        "Tags": [
+            "ime",
+            "fix"
+        ],
+        "DalamudApiLevel": 8,
+        "Punchline": "Fixup IME problems",
+        "DownloadLinkInstall": "undefined/releases/download/v0.0.0.1/latest.zip",
+        "DownloadLinkTesting": "undefined/releases/download/v0.0.0.1/latest.zip",
+        "DownloadLinkUpdate": "undefined/releases/download/v0.0.0.1/latest.zip",
+        "IsHide": false,
+        "IsTestingExclusive": false,
+        "DownloadCount": 0,
+        "LastUpdate": "1699372285"
+    },
+    {
+        "Author": "ReiwaTech",
         "Name": "Allagan Tools",
         "InternalName": "InventoryTools",
         "AssemblyVersion": "1.6.0.2",
@@ -55,7 +76,7 @@
         "DownloadLinkUpdate": "https://github.com/ReiwaTech/PennyPincher/releases/download/v2.0.0.0/latest.zip",
         "IsHide": false,
         "IsTestingExclusive": false,
-        "DownloadCount": 1,
+        "DownloadCount": 2,
         "LastUpdate": "1688662019"
     }
 ]
