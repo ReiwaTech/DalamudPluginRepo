@@ -56,10 +56,11 @@ const getReleaseDownloadCount = async function (username, repo, id) {
 const addExtraFields = async function (manifest) {
   // generate the download link
   const repoUrl = manifest.RepoUrl || `https://github.com/${manifest.Author}/${manifest.Name}`
-  const downloadLink = `${manifest.RepoUrl}/releases/download/v${manifest.AssemblyVersion}/latest.zip`;
+  const downloadLink = `${repoUrl}/releases/download/v${manifest.AssemblyVersion}/latest.zip`;
 
   return {
     ...manifest,
+    RepoUrl: repoUrl,
     DownloadLinkInstall: downloadLink,
     DownloadLinkTesting: downloadLink,
     DownloadLinkUpdate: downloadLink,
