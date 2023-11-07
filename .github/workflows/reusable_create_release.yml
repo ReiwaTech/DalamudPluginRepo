@@ -65,12 +65,13 @@ jobs:
           $directories = @(
               "${{ inputs.output_directory }}",
               "./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}",
-              "./${{ inputs.solution_name }}/bin/${{ inputs.build_configuration }}"
+              "./${{ inputs.solution_name }}/bin/${{ inputs.build_configuration }}",
+              "./bin/${{ inputs.build_configuration }}"
           ) | Where-Object { $_ -ne "" }
           
           foreach ($directory in $directories) {
               Write-Output "Checking $directory"
-              $dllFiles = Get-ChildItem -Path $directory -Filter "*.dll" -File
+              $dllFiles = Get-ChildItem -Path $directory -Filter "*.dll" -File -ErrorAction SilentlyContinue
           
               if ($dllFiles.Count -gt 0) {
                   Write-Output "Found dll file(s)"
