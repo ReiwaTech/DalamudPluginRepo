@@ -58,6 +58,9 @@ jobs:
 
       - name: Detect output directory
         run: |
+          Write-Output ":: Working Directory"
+          Get-Location
+          
           Write-Output ":: Listing all dll files"
           Get-ChildItem -Filter *.dll -Recurse -ErrorAction SilentlyContinue -Force
           
@@ -79,7 +82,14 @@ jobs:
                   break
               }
           }
-    
+          
+          if (-not $directory) {
+              throw "Error: Directory is not set."
+          }
+          
+          Write-Output ":: Listing output files"
+          Get-ChildItem -Path $directory -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object FullName
+          
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         if: env.OUTPUT_DIR
