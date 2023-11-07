@@ -113,6 +113,7 @@ jobs:
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: ./plugins/${{ inputs.internal_name }}/latest.zip
           draft: false
