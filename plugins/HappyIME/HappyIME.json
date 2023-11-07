@@ -1,0 +1,19 @@
+{
+  "Author": "ReiwaTech",
+  "Name": "HappyIME",
+  "InternalName": "HappyIME",
+  "AssemblyVersion": "0.0.0.1",
+  "Description": "Fix IME being set to full-width.",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "ime",
+    "fix"
+  ],
+  "DalamudApiLevel": 8,
+  "LoadRequiredState": 0,
+  "LoadSync": false,
+  "CanUnloadAsync": false,
+  "LoadPriority": 0,
+  "Punchline": "Fixup IME problems",
+  "AcceptsFeedback": true
+}
