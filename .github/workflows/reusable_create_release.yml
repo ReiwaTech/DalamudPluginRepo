@@ -79,7 +79,7 @@ jobs:
           
               if ($zipFile.Count -gt 0) {
                   Write-Output "Found latest.zip"
-                  echo ("OUTPUT_DIR=" + $directory + "/*") >> $env:GITHUB_ENV
+                  echo ("OUTPUT_DIR=" + $directory) >> $env:GITHUB_ENV
                   break
               }
           }
