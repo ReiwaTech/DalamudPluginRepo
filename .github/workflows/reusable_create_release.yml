@@ -56,20 +56,34 @@ jobs:
       - name: Build
         run: msbuild ${{ inputs.solution_name }}.sln /p:Configuration=${{ inputs.build_configuration }}
 
-      - name: List files
-        run: Get-ChildItem -Filter *.dll -Recurse -ErrorAction SilentlyContinue -Force
-
-      - name: Upload Build Artifact (custom)
+      - name: Detect output directory
+        run: |
+          Write-Output ":: Listing all dll files"
+          Get-ChildItem -Filter *.dll -Recurse -ErrorAction SilentlyContinue -Force
+          
+          Write-Output ":: Detecting output directory"
+          $directories = @(
+              "${{ inputs.output_directory }}",
+              "./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}",
+              "./${{ inputs.solution_name }}/bin/${{ inputs.build_configuration }}"
+          ) | Where-Object { $_ -ne "" }
+          
+          foreach ($directory in $directories) {
+              Write-Output "Checking $directory"
+              $dllFiles = Get-ChildItem -Path $directory -Filter "*.dll" -File
+          
+              if ($dllFiles.Count -gt 0) {
+                  Write-Output "Found dll file(s)"
+                  echo ("OUTPUT_DIR=" + $directory + "/*") >> $env:GITHUB_ENV
+                  break
+              }
+          }
+    
+      - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
-        if: inputs.output_directory != ''
+        if: env.OUTPUT_DIR
         with:
-          path: ${{ inputs.output_directory }}/*
-
-      - name: Upload Build Artifact (default)
-        uses: actions/upload-artifact@v3
-        if: inputs.output_directory == ''
-        with:
-          path: ./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}/*
+          path: ${{ env.OUTPUT_DIR }}/*
 
   deploy:
     needs: build
