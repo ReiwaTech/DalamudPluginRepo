@@ -18,6 +18,10 @@ on:
       personal_plugin_repo_branch:
         type: string
         required: true
+      output_directory:
+        type: string
+        required: false
+        default: ''
     secrets:
       PAT:
         required: true
@@ -41,21 +45,57 @@ jobs:
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2
 
-      - name: Restore NuGet Packages
-        run: nuget restore ${{ inputs.solution_name }}.sln
-
       - name: Download Dalamud
         run: |
           Invoke-WebRequest -Uri https://reiwatech.github.io/dalamud-distrib/cn/latest.zip -OutFile latest.zip
           Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev\"
 
+      - name: Restore NuGet Packages
+        run: nuget restore ${{ inputs.solution_name }}.sln
+
       - name: Build
         run: msbuild ${{ inputs.solution_name }}.sln /p:Configuration=${{ inputs.build_configuration }}
 
+      - name: Detect output directory
+        run: |
+          Write-Output ":: Working Directory"
+          Get-Location
+
+          Write-Output ":: Listing all dll files"
+          Get-ChildItem -Filter *.dll -Recurse -ErrorAction SilentlyContinue -Force
+
+          Write-Output ":: Detecting output directory"
+          $directories = @(
+              "${{ inputs.output_directory }}",
+              "./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}",
+              "./${{ inputs.solution_name }}/bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}",
+              "./${{ inputs.solution_name }}/bin/${{ inputs.build_configuration }}",
+              "./bin/${{ inputs.build_configuration }}"
+          ) | Where-Object { $_ -ne "" }
+
+          foreach ($directory in $directories) {
+              Write-Output "Checking $directory"
+              $zipFile = Get-ChildItem -Path $directory -Filter latest.zip -File -ErrorAction SilentlyContinue
+
+              if ($zipFile.Count -gt 0) {
+                  Write-Output "Found latest.zip"
+                  echo ("OUTPUT_DIR=" + $directory) >> $env:GITHUB_ENV
+                  break
+              }
+          }
+
+          if (-not $directory) {
+              throw "Error: Directory is not set."
+          }
+
+          Write-Output ":: Listing output files"
+          Get-ChildItem -Path $directory -Recurse | Where-Object { $_.PSIsContainer -eq $false } | Select-Object FullName
+
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
+        if: env.OUTPUT_DIR
         with:
-          path: ./bin/${{ inputs.build_configuration }}/${{ inputs.solution_name }}/*
+          path: ${{ env.OUTPUT_DIR }}/*
 
   deploy:
     needs: build
@@ -85,6 +125,7 @@ jobs:
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: ./plugins/${{ inputs.internal_name }}/latest.zip
           draft: false
