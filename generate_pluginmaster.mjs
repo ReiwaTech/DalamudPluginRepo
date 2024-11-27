@@ -42,20 +42,27 @@ const extractManifests = function () {
 const getReleaseDownloadCount = async function (username, repo, id) {
   const url = `https://api.github.com/repos/${username}/${repo}/releases/tags/v${id}`;
 
-  let count = 0;
-  const res = await fetch(url);
-  const data = await res.json();
+  try {
+    let count = 0;
+    const res = await fetch(url);
+    const data = await res.json();
 
-  for (const asset of data.assets) {
-    count += asset.download_count;
+    for (const asset of data.assets) {
+      count += asset.download_count;
+    }
+
+    return count;
+  } catch (e) {
+    console.error(`Failed processing ${url}`, e);
+    return 0;
   }
-
-  return count;
 };
 
 const addExtraFields = async function (manifest) {
   // generate the download link
-  const repoUrl = manifest.RepoUrl || `https://github.com/${manifest.Author}/${manifest.Name}`
+  const repoUrl =
+    manifest.RepoUrl ||
+    `https://github.com/${manifest.Author}/${manifest.Name}`;
   const downloadLink = `${repoUrl}/releases/download/v${manifest.AssemblyVersion}/latest.zip`;
 
   return {
