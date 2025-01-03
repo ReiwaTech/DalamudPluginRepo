@@ -18,14 +18,14 @@
         "DownloadLinkUpdate": "https://github.com/ReiwaTech/HappyIME/releases/download/v0.0.0.2/latest.zip",
         "IsHide": false,
         "IsTestingExclusive": false,
-        "DownloadCount": 0,
+        "DownloadCount": 3,
         "LastUpdate": "1733147833"
     },
     {
         "Author": "ReiwaTech",
         "Name": "Allagan Tools",
         "InternalName": "InventoryTools",
-        "AssemblyVersion": "1.7.0.20",
+        "AssemblyVersion": "1.7.2.1",
         "Description": "Allagan Tool's primary purpose is to keep track of items across your characters/retainers/free company. With it's filter system you'll never lose track of items or not know where they should be sorted.\n\nWhile this is it's primary purpose, it has quite an exhaustive list of other features including:\n\t- Craft planning\n\t- Market board integration\n\t- Item highlighting in inventories when searching/sorting and picking ingredients for crafts\n\t- Item window that includes vendor and source information among other things\n\t- Duty/mob/airship/submarine windows that are fully searchable\n\t- A filtering system that lets you setup complex searches for specific items \n\t- Tooltip integration that'll let you see where the items are on hover",
         "ApplicableVersion": "any",
         "RepoUrl": "https://github.com/ReiwaTech/InventoryTools",
@@ -44,13 +44,13 @@
         ],
         "IconUrl": "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/icon.png",
         "Punchline": "Get organized in FFXIV, easily locate/show where to sort items, plan your crafting, and search for mobs, duties, airships, and submarines!",
-        "DownloadLinkInstall": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.7.0.20/latest.zip",
-        "DownloadLinkTesting": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.7.0.20/latest.zip",
-        "DownloadLinkUpdate": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.7.0.20/latest.zip",
+        "DownloadLinkInstall": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.7.2.1/latest.zip",
+        "DownloadLinkTesting": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.7.2.1/latest.zip",
+        "DownloadLinkUpdate": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.7.2.1/latest.zip",
         "IsHide": false,
         "IsTestingExclusive": false,
-        "DownloadCount": 7,
-        "LastUpdate": "1732718227"
+        "DownloadCount": 0,
+        "LastUpdate": "1735926829"
     },
     {
         "Author": "ReiwaTech",
