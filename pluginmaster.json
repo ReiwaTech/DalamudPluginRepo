@@ -10,7 +10,7 @@
             "ime",
             "fix"
         ],
-        "DalamudApiLevel": 10,
+        "DalamudApiLevel": 11,
         "Punchline": "Fixup IME problems",
         "RepoUrl": "https://github.com/ReiwaTech/HappyIME",
         "DownloadLinkInstall": "https://github.com/ReiwaTech/HappyIME/releases/download/v0.0.0.2/latest.zip",
