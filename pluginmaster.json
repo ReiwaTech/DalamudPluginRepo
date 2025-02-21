@@ -18,7 +18,7 @@
         "DownloadLinkUpdate": "https://github.com/ReiwaTech/HappyIME/releases/download/v0.0.0.2/latest.zip",
         "IsHide": false,
         "IsTestingExclusive": false,
-        "DownloadCount": 3,
+        "DownloadCount": 4,
         "LastUpdate": "1733147833"
     },
     {
@@ -34,7 +34,7 @@
             "Sorting",
             "Filtering"
         ],
-        "DalamudApiLevel": 10,
+        "DalamudApiLevel": 11,
         "ImageUrls": [
             "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/banner1.png",
             "https://raw.githubusercontent.com/ReiwaTech/InventoryTools/main/InventoryTools/Images/screenshot1.png",
@@ -49,7 +49,7 @@
         "DownloadLinkUpdate": "https://github.com/ReiwaTech/InventoryTools/releases/download/v1.7.2.1/latest.zip",
         "IsHide": false,
         "IsTestingExclusive": false,
-        "DownloadCount": 0,
+        "DownloadCount": 2,
         "LastUpdate": "1735926829"
     },
     {
